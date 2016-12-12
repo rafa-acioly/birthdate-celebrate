@@ -52,7 +52,7 @@ function brithdate_celebrate_page()
 
   echo __("<h3>Aniversariantes do mês</h3>");
 
-	starts_html();
+	echo starts_html();
 
   	foreach ($clients as $client) {
   		$date = $birthdateController->normalize_date($client->billing_birthdate);
@@ -82,7 +82,7 @@ function brithdate_celebrate_page()
   		}
   	}
 
-	finish_html();
+	echo finish_html();
 }
 
 
