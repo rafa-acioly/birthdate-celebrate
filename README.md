@@ -9,17 +9,14 @@
 
 <h4 align="center">A plugin the give happy birthday to your clients.</h4>
 
-<p align="center">  
-  <a href="https://github.com/rafa-acioly/laravel-helpers-visualstudio/releases">
-  <img src="https://img.shields.io/github/release/rafa-acioly/laravel-helpers-visualstudio.svg" alt="Release"></a>       
-</p>
+[![GitHub release](https://img.shields.io/github/release/rafa-acioly/birthdate-celebrate.svg)]()
 
 ### Description ###
 This plugin add a new section on sidebar menu of wordpress with a list of user that make Birthday on the current month.
 ##### But why i need install this? #####
 Send email marketing to user that make birthday on the current month with discounts, coupons and etc.
 
- 
+
 ### Contribute ###
 You can contribute to the source code in our [Github](https://github.com/rafa-acioly/birthdate-celebrate) page.
 
