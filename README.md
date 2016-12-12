@@ -7,7 +7,7 @@
   <br>
 </h1>
 
-<h4 align="center">A plugin the give happy birthday to your clients.</h4>
+<h4 align="center">A plugin to give happy birthday to your clients.</h4>
 
 [![GitHub release](https://img.shields.io/github/release/rafa-acioly/birthdate-celebrate.svg)]()
 
