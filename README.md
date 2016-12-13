@@ -15,6 +15,7 @@
 This plugin add a new section on sidebar menu of wordpress with a list of user that make Birthday on the current month.
 ##### But why i need install this? #####
 Send email marketing to user that make birthday on the current month with discounts, coupons and etc.
+Increase the client fidelization.
 
 
 ### Contribute ###
