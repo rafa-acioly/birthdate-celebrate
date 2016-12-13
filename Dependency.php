@@ -38,5 +38,4 @@ class Dependency
 
 	}
 }
-$dependency = new Dependency();
-add_action('plugins_loaded', array($dependency, 'check_dependencies'));
+add_action('plugins_loaded', array(new Dependency(), 'check_dependencies'));
