@@ -25,7 +25,8 @@ function add_birthday_to_menu()
 
 function starts_html()
 {
-	return "<table class=\"wp-list-table widefat fixed striped\">
+	return "<div class=\"wrap\">
+	<table class=\"wp-list-table widefat fixed striped\">
 		<thead>
 			<td class=\"manage-column column-name\">Nome do cliente</td>
 			<td class=\"manage-column\">Usuario</td>
@@ -37,7 +38,7 @@ function starts_html()
 
 function finish_html()
 {
-	return "</tbody></table><br>";
+	return "</tbody></table></div>";
 }
 
 function birthday_celebrate_page()
