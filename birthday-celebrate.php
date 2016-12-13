@@ -42,24 +42,24 @@ function finish_html()
 
 function birthday_celebrate_page()
 {
-    $clients = get_users('orderby=nicename');
+    $clients = get_users('role=customer&orderby=nicename');
 
     echo __("<h3>Aniversariantes do mês</h3>");
 
 	echo starts_html();
 
   	foreach ($clients as $client) {
-  		$birthday = new Birthday($client->billing_birthdate);
-
-  		if (!strtotime($birthday->get_date())) {
-  			continue; // If client has no birth date skip to next one.
+  		if (!$client->billing_birthdate) {
+  			continue;
   		}
+
+  		$birthday = new Birthday($client->billing_birthdate);
 
   		if ($birthday->get_month() == $birthday->get_current_month()) {
   			echo "<tr>
-					<td>{$client->customer_name}</td>
+					<td>{$client->display_name}</td>
 					<td>{$client->user_nicename}</td>
-					<td>{$birthday->get_date()}</td>
+					<td>{$birthday->get_date()->format('d-m-Y')}</td>
 					<td>{$client->user_email}</td>
 				</tr>";
   		}
