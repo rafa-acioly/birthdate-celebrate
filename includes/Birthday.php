@@ -1,8 +1,5 @@
 <?php
 
-/**
-* 
-*/
 class Birthday
 {
 	public $date;
@@ -15,7 +12,7 @@ class Birthday
      */
     public function __construct($date)
     {
-            $this->birthday = new DateTime($this->normalize_date($date));
+        $this->birthday = new DateTime($this->normalize_date($date));
     }
 
     /**

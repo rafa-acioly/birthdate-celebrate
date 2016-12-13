@@ -8,8 +8,13 @@ Author: Rafael Acioly
 Author URI: https://github.com/rafa-acioly
 License: GPL
 */
-require_once "Dependency.php";
-require_once "Birthday.php";
+
+if ( ! defined('ABSPATH') ) {
+	exit;
+}
+
+require_once dirname(__FILE__) . '/includes/Dependency.php';
+require_once dirname(__FILE__) . '/includes/Birthday.php';
 add_action('admin_menu', 'add_birthday_to_menu');
 
 function add_birthday_to_menu()
