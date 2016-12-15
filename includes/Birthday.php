@@ -25,17 +25,6 @@ class Birthday
 	}
 
     /**
-     * Get current month of the year.
-     * @return string
-     */
-	public function get_current_month()
-	{
-		$month = new DateTime('now');
-
-		return $month->format('m');
-	}
-
-    /**
      * Get date of user birthday.
      * @return DateTime
      */

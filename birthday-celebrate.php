@@ -21,7 +21,7 @@ class Birthdate_celebrate
 
         add_menu_page('Clientes', 'Clientes',
                       'manage_options', 'birthday-celebrate',
-                      array(new static, 'birthday_celebrate_page'),
+                      array(new static, 'birthdate_celebrate_page'),
                       'dashicons-universal-access', 6);
     }
 
@@ -29,16 +29,16 @@ class Birthdate_celebrate
 
         $customers    = Customer::all();
 
-        $customerList = array_map(function($customer) {
-            return $customer->billing_birthdate != null;
-        }, $customers);
+        $customersFiltered = array_filter($customers, function($customer) {
+           return $customer->billing_birthdate != null && date('m') == date('m', strtotime(str_replace('/', '-', $customer->billing_birthdate)));
+        });
 
-        $list = array_map(function($customer) {
+        $customers = array_map(function($customer) {
             $customer->billing_birthdate = new Birthday($customer->billing_birthdate);
             return $customer;
-        }, $customerList);
+        }, $customersFiltered);
 
-        require Render::view('table');
+        require Render::view('content');
     }
 }
 

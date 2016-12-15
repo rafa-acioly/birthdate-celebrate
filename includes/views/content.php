@@ -10,12 +10,14 @@
             </tr>
         </thead>
         <tbody>
+        <?php foreach ($customers as $customer): ?>
             <tr>
-                <td>{$list->display_name}</td>
-                <td>{$list->user_nicename}</td>
-                <td>{$list->billing_birthdate->get_date()->format('d-m-Y')}</td>
-                <td>{$list->user_email}</td>
+                    <td><?= $customer->display_name ?></td>
+                    <td><?= $customer->user_nicename ?></td>
+                    <td><?= $customer->billing_birthdate->get_date()->format('d-m-Y') ?></td>
+                    <td><?= $customer->user_email ?></td>
             </tr>
+        <?php endforeach; ?>
         </tbody>
     </table>
 </div>

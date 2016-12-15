@@ -3,8 +3,8 @@
 
 class Render
 {
-    public function view($viewName)
+    public static function view($viewName)
     {
-        return "../views/{$viewName}.php";
+        return plugin_dir_path(__FILE__) . "views/{$viewName}.php";
     }
 }
