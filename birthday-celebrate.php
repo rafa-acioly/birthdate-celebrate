@@ -8,11 +8,12 @@ Author: Rafael Acioly
 Author URI: https://github.com/rafa-acioly
 License: GPL
 */
+
 if (!defined('ABSPATH')) {
     exit;
 }
+
 require 'bootstrap.php';
-add_action('admin_menu', array('Birthdate_celebrate', 'add_birthdate_to_menu'));
 
 class Birthdate_celebrate
 {
@@ -42,5 +43,6 @@ class Birthdate_celebrate
     }
 }
 
+add_action('admin_menu', array('Birthdate_celebrate', 'add_birthdate_to_menu'));
 
 
