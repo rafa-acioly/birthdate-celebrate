@@ -3,8 +3,8 @@
 
 class Render
 {
-    public function view()
+    public function view($viewName)
     {
-
+        return "../views/{$viewName}.php";
     }
 }
