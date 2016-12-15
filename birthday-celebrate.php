@@ -13,9 +13,24 @@ if ( ! defined('ABSPATH') ) {
 	exit;
 }
 
-require_once dirname(__FILE__) . '/includes/Dependency.php';
-require_once dirname(__FILE__) . '/includes/Birthday.php';
+require 'bootstrap.php';
+
 add_action('admin_menu', 'add_birthday_to_menu');
+
+
+class Brithdate_celebrate
+{
+
+
+    public function birthdate_celebrate_page()
+    {
+        $customers = Customer::all();
+
+        $list = array_map(function($customer) {
+            return $customer->billing_birthdate != null;
+        }, $customers);
+    }
+}
 
 function add_birthday_to_menu()
 {
@@ -49,10 +64,6 @@ function finish_html()
 function birthday_celebrate_page()
 {
     $clients = get_users('role=customer&orderby=nicename');
-
-    echo __("<h3>Aniversariantes do mês</h3>");
-
-	echo starts_html();
 
   	foreach ($clients as $client) {
   		if (!$client->billing_birthdate) {
