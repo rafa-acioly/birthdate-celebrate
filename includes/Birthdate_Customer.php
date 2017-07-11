@@ -41,9 +41,12 @@ class Birthdate_Customer
      */
     public static function all()
     {
-        return self::getCustomersWithValidBirthDate(
-        	   self::convertToWcCustomerClass(
-        		  get_users('role=customer')
+        return self::getCustomersWithValidBirthDate( // Retrieve only the ones with valid birth date
+
+        	   self::convertToWcCustomerClass( // Convert to an array of WC_Customer()
+
+        		  get_users('role=customer') // Retrieve all customers
+                  
         		)
         	);
     }
