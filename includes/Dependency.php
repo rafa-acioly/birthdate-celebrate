@@ -14,6 +14,7 @@ class Dependency
 	 */
 	private $dependecies = [
 		'Extra_Checkout_Fields_For_Brazil',
+		'woocommerce',
 	];
 
 	/**
@@ -23,10 +24,10 @@ class Dependency
 	public function show_missing_dependencies()
 	{
 		echo "<div class=\"error\"><ul>";
-		foreach ($this->dependencies_missing as $dependency => $value) {
+		foreach ($this->dependencies_missing as $dependency) {
 				$plugin = preg_replace('/[^a-zA-Z]/', ' ', $dependency);
 				echo "<li>";
-					_e("BirthDay Celebrate requires $plugin. Please install it.", 'wpse');
+					_e("BirthDay Celebrate requires {$plugin}. Please install it.", 'wpse');
 				echo "</li>";
 		}
 		echo "</ul></div>";

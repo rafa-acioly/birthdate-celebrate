@@ -10,12 +10,12 @@
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($customers as $customer): ?>
+        <?php foreach ($customersWithBirthDate as $customer): ?>
             <tr>
-                    <td><?= $customer->display_name ?></td>
-                    <td><?= $customer->user_nicename ?></td>
-                    <td><?= $customer->billing_birthdate->get_date()->format('d-m-Y') ?></td>
-                    <td><?= $customer->user_email ?></td>
+                    <td><?= $customer->get_first_name() . ' ' . $customer->get_last_name(); ?></td>
+                    <td><?= $customer->get_username(); ?></td>
+                    <td><?= $customer->get_meta('billing_birthdate'); ?></td>
+                    <td><?= $customer->get_email(); ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
