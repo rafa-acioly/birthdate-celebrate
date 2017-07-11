@@ -1,6 +1,15 @@
 <div class="wrap">
-    <?= __("<h3>Aniversariantes do mês</h3>"); ?>
-    <?php if (!empty(array_shift($customers))): ?>
+    <h1 class="wp-heading-inline">Aniversariantes</h1>
+    <button class="page-title-action" id="birthdate_celebrate_send_mails">Eviar Emails</button>
+    <hr class="wp-header-end">
+    <ul class="subsubsub">
+        <ul class="subsubsub">
+            <li class="all"><a href="" class="current">Tudo <span class="count"><?= count($customers); ?></span></a> |</li>
+            <li class="publish"><a href="">Homens <span class="count"><?= count($malesQuantity) ?></span></a> |</li>
+            <li class="publish"><a href="">Mulheres <span class="count"><?= count($femaleQuantity) ?></span></a></li>
+        </ul>
+    </ul>
+    <?php if (!empty($customers)): ?>
         <table class="wp-list-table widefat fixed striped">
             <thead>
                 <tr>

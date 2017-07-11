@@ -15,6 +15,13 @@ if (!defined('ABSPATH')) {
 
 require 'bootstrap.php';
 
+function add_scripts_to_plugin()
+{
+  wp_enqueue_script( 'birthdate_celebrate_js', dirname(__FILE__) . '/includes/assets/js/main.js', array( 'jquery' ));
+}
+add_action('wp_enqueue_scripts', 'add_scripts_to_plugin');
+
+
 class Birthdate_celebrate
 {
 
@@ -43,6 +50,14 @@ class Birthdate_celebrate
   public function birthdate_celebrate_page() {
 
     $customers = Birthdate_Customer::all();
+
+    $malesQuantity = array_filter($customers, function ($customer) {
+      return $customer->get_meta('billing_sex') === 'Male';
+    });
+
+    $femaleQuantity = array_filter($customers, function ($customer) {
+      return $customer->get_meta('billing_sex') === 'Female';
+    });
 
     require Render::view('content');
   }
