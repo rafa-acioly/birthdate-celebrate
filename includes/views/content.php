@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($customersWithBirthDate as $customer): ?>
+        <?php foreach ($customers as $customer): ?>
             <tr>
                     <td><?= $customer->get_first_name() . ' ' . $customer->get_last_name(); ?></td>
                     <td><?= $customer->get_username(); ?></td>

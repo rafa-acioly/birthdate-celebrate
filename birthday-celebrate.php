@@ -34,15 +34,7 @@ class Birthdate_celebrate
 
   public function birthdate_celebrate_page() {
 
-    $Allcustomers = Customer::all();
-
-    $customersList = array_map(function($c) {
-      return new WC_Customer($c->ID);
-    }, $Allcustomers);
-
-    $customersWithBirthDate = array_filter($customersList, function($c) {
-      return $c->get_meta('billing_birthdate') != null;
-    });
+    $customers = Birthdate_Customer::all();
 
     require Render::view('content');
   }
