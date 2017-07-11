@@ -18,20 +18,28 @@ require 'bootstrap.php';
 class Birthdate_celebrate
 {
 
+  /**
+   * Add the menu option "Client"
+   */
   public static function add_birthdate_to_menu() {
 
     add_menu_page(
-      'Clientes', 
-      'Clientes',
+      __('Clientes'), 
+      __('Clientes'),
       'manage_options', 
       'birthday-celebrate',
       array(
         new static, 
         'birthdate_celebrate_page'
       ),
-      'dashicons-universal-access', 6);
+      'dashicons-megaphone', 6);
   }
 
+  /**
+   * Render the page plugin
+   * 
+   * @return mix
+   */
   public function birthdate_celebrate_page() {
 
     $customers = Birthdate_Customer::all();
