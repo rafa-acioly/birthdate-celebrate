@@ -7,33 +7,20 @@
 class Birthdate_Customer
 {
     /**
-     * Convert all users of type "customer" to use WC_Customer class
-     * 
-     * @param  Array $list
-     * @return Array
+     * Check if the user birth date is this month
+     * @param  String $billing_birthdate
+     * @return Boolean
      */
-    private static function convertToWcCustomerClass($list)
+    private static function monthOfBirthdate($billing_birthdate)
     {
-    	$customersList = array_map(function($customer) {
-	      return new WC_Customer($customer->ID);
-	    }, $list);
+        $currentMonth = new DateTime('now');
+        $birthdate = new DateTime(preg_replace('/[^0-9]/', '-', $billing_birthdate));
 
-	    return $customersList;
-    }
+        if ($currentMonth->format('m') == $birthdate->format('m')) {
+            return true;
+        }
 
-    /**
-     *  Get all customers with a valid birthdate
-     * 
-     * @param  Array $list
-     * @return Array
-     */
-    private static function getCustomersWithValidBirthDate($list)
-    {
-    	$customersWithBirthDate = array_filter($list, function($customer) {
-	      return $customer->get_meta('billing_birthdate') != null;
-	    });
-
-	    return $customersWithBirthDate;
+        return false;
     }
 
     /**
@@ -41,13 +28,15 @@ class Birthdate_Customer
      */
     public static function all()
     {
-        return self::getCustomersWithValidBirthDate( // Retrieve only the ones with valid birth date
+        $customers =  array_map(function($customer) {
+            $instance = new WC_Customer($customer->ID);
+            $birthdate = $instance->get_meta('billing_birthdate');
 
-        	   self::convertToWcCustomerClass( // Convert to an array of WC_Customer()
+            if ($birthdate != null && self::monthOfBirthdate($birthdate)) {
+                return $instance;
+            }
+        }, get_users('role=customer'));
 
-        		  get_users('role=customer') // Retrieve all customers
-                  
-        		)
-        	);
+        return $customers;
     }
 }
