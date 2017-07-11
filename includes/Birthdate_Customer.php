@@ -1,8 +1,17 @@
 <?php
 
-
+/**
+ * This class separates all customers who have a registered date of birth.
+ * 
+ */
 class Birthdate_Customer
 {
+    /**
+     * Convert all users of type "customer" to use WC_Customer class
+     * 
+     * @param  Array $list
+     * @return Array
+     */
     private static function convertToWcCustomerClass($list)
     {
     	$customersList = array_map(function($customer) {
@@ -12,6 +21,12 @@ class Birthdate_Customer
 	    return $customersList;
     }
 
+    /**
+     *  Get all customers with a valid birthdate
+     * 
+     * @param  Array $list
+     * @return Array
+     */
     private static function getCustomersWithValidBirthDate($list)
     {
     	$customersWithBirthDate = array_filter($list, function($customer) {
@@ -21,12 +36,15 @@ class Birthdate_Customer
 	    return $customersWithBirthDate;
     }
 
+    /**
+     * @return Array
+     */
     public static function all()
     {
         return self::getCustomersWithValidBirthDate(
-        		self::convertToWcCustomerClass(
-        				get_users('role=customer')
-        			)
+        	   self::convertToWcCustomerClass(
+        		  get_users('role=customer')
+        		)
         	);
     }
 }
